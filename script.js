@@ -121,14 +121,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     modal.style.display = 'flex';
 
+    // Encoded the access code
+    const encodedCode = 'MDkxMA==';
+
+    // Decode the code when needed
+    const decodedCode = atob(encodedCode);
+
+    // Event listener for the submit button
     submitCode.addEventListener('click', () => {
-        if (accessCode.value === '0910') {
+        if (accessCode.value === decodedCode) {
             modal.style.display = 'none';
-            document.body.style.overflow = 'auto'; // Allow scrolling after correct code
+            document.body.style.overflow = 'auto';
         } else {
             alert('Incorrect code. Please try again.');
         }
     });
+
 
     accessCode.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
